@@ -10,10 +10,13 @@ class Chat extends Component {
   pushMessage(e) {
     // prevent submit
     e.preventDefault();
-    // save the new message
-    this.props.onMessage({ time: Date.now(), value: this.refs.msgInput.value });
-    // clear the input
-    this.refs.msgInput.value = '';
+    const { value } = this.refs.msgInput;
+    if (value) {
+      // save the new message
+      this.props.onMessage({ time: Date.now(), value });
+      // clear the input
+      this.refs.msgInput.value = '';
+    }
   }
 
   render() {
