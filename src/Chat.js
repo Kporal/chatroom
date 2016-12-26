@@ -3,21 +3,17 @@ import React, { Component } from 'react';
 class Chat extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      msg: ''
-    };
     // bind this
     this.pushMessage = this.pushMessage.bind(this);
-    this.handleMsgChange = this.handleMsgChange.bind(this);
   }
 
   pushMessage(e) {
+    // prevent submit
     e.preventDefault();
-    this.props.onMessage({ time: Date.now(), value: this.state.msg });
-  }
-
-  handleMsgChange(e) {
-    this.setState({ msg: e.target.value });
+    // save the new message
+    this.props.onMessage({ time: Date.now(), value: this.refs.msgInput.value });
+    // clear the input
+    this.refs.msgInput.value = '';
   }
 
   render() {
@@ -30,7 +26,7 @@ class Chat extends Component {
         <h1>{this.props.title}</h1>
         <ul>{messageList}</ul>
         <form>
-          <input type="text" name="msg" value={this.state.value} onChange={this.handleMsgChange} />
+          <input type="text" name="msg" ref="msgInput" />
           <button onClick={this.pushMessage}>Ok</button>
         </form>
       </div>
