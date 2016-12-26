@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FormGroup, InputGroup, FormControl, Button } from 'react-bootstrap';
+import { FormGroup, InputGroup, FormControl, Button, Glyphicon } from 'react-bootstrap';
 
 class MessageInput extends Component {
 
@@ -26,7 +26,7 @@ class MessageInput extends Component {
 
   render() {
     return (
-      <form action="#" method="post">
+      <form action="#" method="post" onSubmit={this.pushMessage}>
         <FormGroup>
           <InputGroup>
             <FormControl
@@ -36,7 +36,7 @@ class MessageInput extends Component {
               placeholder="Type your message..."
               inputRef={ref => { this.msgInputRef = ref; }} />
             <InputGroup.Button>
-              <Button onClick={this.pushMessage}>Ok</Button>
+              <Button type="submit"><Glyphicon glyph="send" /></Button>
             </InputGroup.Button>
           </InputGroup>
         </FormGroup>
