@@ -38,7 +38,7 @@ class MessageInput extends Component {
               placeholder="Type your message..."
               inputRef={ref => { this.msgInputRef = ref; }} />
             <InputGroup.Button>
-              <Button type="submit"><Glyphicon glyph="send" /></Button>
+              <Button type="submit" title="Send message"><Glyphicon glyph="send" /></Button>
             </InputGroup.Button>
           </InputGroup>
         </FormGroup>
