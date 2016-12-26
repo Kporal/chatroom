@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { FormGroup, InputGroup, FormControl, Button, Glyphicon } from 'react-bootstrap';
+import Message from './Message';
 
 class MessageInput extends Component {
 
@@ -18,7 +19,8 @@ class MessageInput extends Component {
     // prevent empty message
     if (value) {
       // save the new message
-      this.props.onMessage({ time: Date.now(), value });
+      const message =  new Message(this.props.name, Date.now(), value);
+      this.props.onMessage(message);
       // clear the input
       this.msgInputRef.value = '';
     }

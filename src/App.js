@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import Chat from './Chat';
 import { Grid, Row, Col } from 'react-bootstrap';
+import Chat from './Chat';
+import Message from './Message';
 
 class App extends Component {
   constructor(props) {
@@ -8,9 +9,9 @@ class App extends Component {
     // set the initial state
     this.state = {
       messages: [
-        { time: new Date(2016,10,10).getTime(), value: "Hello"},
-        { time: new Date(2016,10,11).getTime(), value: "Hi"},
-        { time: new Date(2016,10,12).getTime(), value: "How are you?"},
+        new Message('Chat A', new Date(2016,10,10).getTime(), "Hello"),
+        new Message('Chat B', new Date(2016,10,11).getTime(), "Hi"),
+        new Message('Chat A', new Date(2016,10,12).getTime(), "How are you?"),
       ]
     };
     // bind this
@@ -31,10 +32,10 @@ class App extends Component {
       <Grid>
         <Row>
           <Col xs={12} sm={6} md={6}>
-            <Chat title="Chat A" messages={this.state.messages} onMessage={this.saveMessage} />
+            <Chat name="Chat A" messages={this.state.messages} onMessage={this.saveMessage} />
           </Col>
           <Col xs={12} sm={6} md={6}>
-            <Chat title="Chat B" messages={this.state.messages} onMessage={this.saveMessage} />
+            <Chat name="Chat B" messages={this.state.messages} onMessage={this.saveMessage} />
           </Col>
         </Row>
       </Grid>
