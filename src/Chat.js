@@ -1,23 +1,11 @@
 import React, { Component } from 'react';
 import { ListGroup, ListGroupItem } from 'react-bootstrap';
+import MessageInput from './MessageInput';
 
 class Chat extends Component {
+
   constructor(props) {
     super(props);
-    // bind this
-    this.pushMessage = this.pushMessage.bind(this);
-  }
-
-  pushMessage(e) {
-    // prevent submit
-    e.preventDefault();
-    const { value } = this.refs.msgInput;
-    if (value) {
-      // save the new message
-      this.props.onMessage({ time: Date.now(), value });
-      // clear the input
-      this.refs.msgInput.value = '';
-    }
   }
 
   render() {
@@ -29,10 +17,7 @@ class Chat extends Component {
       <div>
         <h1>{this.props.title}</h1>
         <ListGroup>{messageList}</ListGroup>
-        <form action="#" method="post">
-          <input type="text" name="msg" ref="msgInput" />
-          <button onClick={this.pushMessage}>Ok</button>
-        </form>
+        <MessageInput onMessage={this.props.onMessage} />
       </div>
     );
   }
