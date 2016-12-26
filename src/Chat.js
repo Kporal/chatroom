@@ -8,7 +8,7 @@ class Chat extends Component {
     return (
       <div>
         <h1>{name}</h1>
-        <MessageList messages={messages} />
+        <MessageList chat={name} messages={messages} />
         <MessageInput chat={name} onMessage={onMessage} />
       </div>
     );

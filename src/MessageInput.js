@@ -19,7 +19,7 @@ class MessageInput extends Component {
     // prevent empty message
     if (value) {
       // save the new message
-      const message =  new Message(this.props.name, Date.now(), value);
+      const message =  new Message(this.props.chat, Date.now(), value);
       this.props.onMessage(message);
       // clear the input
       this.msgInputRef.value = '';
