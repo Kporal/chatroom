@@ -7,8 +7,14 @@ class MessageList extends Component {
     const messageList = this.props.messages.map(msg => {
       const { chatName, time, value } = msg;
       const dateFormat = new Date(time).toDateString();
-      const msgPosition = chatName === this.props.chat ? 'text-left' : 'text-right';
-      return <ListGroupItem header={dateFormat} key={time.toString()} className={msgPosition}>{value}</ListGroupItem>;
+      const isCurrentChat = chatName === this.props.chat;
+      const msgPosition = isCurrentChat ? 'text-right' : 'text-left';
+      return (
+        <ListGroupItem
+          header={dateFormat}
+          key={time.toString()}
+          active={isCurrentChat}
+          className={msgPosition}>{value}</ListGroupItem>);
     });
 
     return (
