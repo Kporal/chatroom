@@ -10,15 +10,26 @@ class App extends Component {
       messages: [
         { time: new Date(2016,10,10).getTime(), value: "Hello"},
         { time: new Date(2016,10,11).getTime(), value: "Hi"},
-        { time: new Date(2016,10,12).getTime(), value: "Hoz qre you?"},
+        { time: new Date(2016,10,12).getTime(), value: "How are you?"},
       ]
     };
+    // bind this
+    this.saveMessage = this.saveMessage.bind(this);
+  }
+
+  saveMessage(message) {
+    // shallow copy of the messages already in the state
+    const messages = this.state.messages.slice();
+    // push the new message
+    messages.push(message);
+    // save it in the state
+    this.setState({ messages });
   }
 
   render() {
     return (
       <div>
-        <Chat title="Chat A" messages={this.state.messages} />
+        <Chat title="Chat A" messages={this.state.messages} onMessage={this.saveMessage} />
       </div>
     );
   }

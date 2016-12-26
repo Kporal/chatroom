@@ -3,10 +3,16 @@ import React, { Component } from 'react';
 class Chat extends Component {
   constructor(props) {
     super(props);
+    // bind this
+    this.pushMessage = this.pushMessage.bind(this);
+  }
+
+  pushMessage(e) {
+    e.preventDefault();
+    this.props.onMessage({ time: Date.now(), value: "Fine, thank you!" });
   }
 
   render() {
-
     const messageList = this.props.messages.map(msg =>
       <li key={msg.time.toString()}>{msg.value}</li>
     );
@@ -17,7 +23,7 @@ class Chat extends Component {
         <ul>{messageList}</ul>
         <form>
           <input type="text" name="entry" />
-          <button>Ok</button>
+          <button onClick={this.pushMessage}>Ok</button>
         </form>
       </div>
     );
