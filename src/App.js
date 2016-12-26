@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Chat from './Chat';
-import './App.css';
+import { Grid, Row, Col } from 'react-bootstrap';
 
 class App extends Component {
   constructor(props) {
@@ -28,10 +28,16 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <Chat title="Chat A" messages={this.state.messages} onMessage={this.saveMessage} />
-        <Chat title="Chat B" messages={this.state.messages} onMessage={this.saveMessage} />
-      </div>
+      <Grid>
+        <Row>
+          <Col xs={12} sm={6} md={6}>
+            <Chat title="Chat A" messages={this.state.messages} onMessage={this.saveMessage} />
+          </Col>
+          <Col xs={12} sm={6} md={6}>
+            <Chat title="Chat B" messages={this.state.messages} onMessage={this.saveMessage} />
+          </Col>
+        </Row>
+      </Grid>
     );
   }
 }
