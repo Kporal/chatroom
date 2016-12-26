@@ -1,23 +1,15 @@
 import React, { Component } from 'react';
-import { ListGroup, ListGroupItem } from 'react-bootstrap';
+import MessageList from './MessageList';
 import MessageInput from './MessageInput';
 
 class Chat extends Component {
-
-  constructor(props) {
-    super(props);
-  }
-
   render() {
-    const messageList = this.props.messages.map(msg =>
-      <ListGroupItem header={new Date(msg.time).toDateString()} key={msg.time.toString()}>{msg.value}</ListGroupItem>
-    );
-
+    const { title, messages, onMessage } = this.props;
     return (
       <div>
-        <h1>{this.props.title}</h1>
-        <ListGroup>{messageList}</ListGroup>
-        <MessageInput onMessage={this.props.onMessage} />
+        <h1>{title}</h1>
+        <MessageList messages={messages} />
+        <MessageInput onMessage={onMessage} />
       </div>
     );
   }
