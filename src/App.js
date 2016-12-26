@@ -30,6 +30,7 @@ class App extends Component {
     return (
       <div>
         <Chat title="Chat A" messages={this.state.messages} onMessage={this.saveMessage} />
+        <Chat title="Chat B" messages={this.state.messages} onMessage={this.saveMessage} />
       </div>
     );
   }
