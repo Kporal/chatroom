@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { ListGroup, ListGroupItem } from 'react-bootstrap';
 
 class Chat extends Component {
   constructor(props) {
@@ -21,14 +22,14 @@ class Chat extends Component {
 
   render() {
     const messageList = this.props.messages.map(msg =>
-      <li key={msg.time.toString()}>{msg.value}</li>
+      <ListGroupItem header={new Date(msg.time).toDateString()} key={msg.time.toString()}>{msg.value}</ListGroupItem>
     );
 
     return (
       <div>
         <h1>{this.props.title}</h1>
-        <ul>{messageList}</ul>
-        <form>
+        <ListGroup>{messageList}</ListGroup>
+        <form action="#" method="post">
           <input type="text" name="msg" ref="msgInput" />
           <button onClick={this.pushMessage}>Ok</button>
         </form>
